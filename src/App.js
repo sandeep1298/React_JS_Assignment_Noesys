@@ -98,8 +98,8 @@ function App() {
                       {(provided, snap)=>(
                         <div
                         ref={provided.innerRef}
-											  {...provided.draggableProps}
-											  {...provided.dragHandleProps}
+			{...provided.draggableProps}
+			{...provided.dragHandleProps}
                         >
                           <div className="col-lg-4 ml-3 pb-5">
                           {it.content}
