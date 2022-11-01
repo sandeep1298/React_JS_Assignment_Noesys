@@ -1,0 +1,56 @@
+import ReactEChart from "echarts-for-react";
+import React, {useState} from 'react'
+import { Resizable  } from 're-resizable';
+
+export default function CandleStick() {
+ const [width, setWidth] = useState(320)
+ const [height, setHeight] = useState(300)
+
+    const eChartsOption = {
+        title: {
+          text: "Candle Stick"
+        },
+        xAxis: {
+            data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
+          },
+          yAxis: {},
+          series: [
+            {
+              type: 'candlestick',
+              data: [
+                [20, 34, 10, 38],
+                [40, 35, 30, 50],
+                [31, 38, 33, 44],
+                [38, 15, 5, 42]
+              ]
+            }
+          ]
+      };
+
+    
+  return (
+
+        <>
+          <Resizable   
+            className="card"
+            size={{ width, height }}
+            onResizeStop={(e, direction, ref, d) => {
+                setWidth(width + d.width);
+                setHeight(height + d.height);
+            }}
+
+            onResize = {(e) =>{
+                e.preventDefault()
+                setHeight(300)
+                setWidth(300)
+                }}>
+
+            <div className="card-body">
+                <ReactEChart option={eChartsOption}/>
+            </div>
+          </Resizable>   
+        </>
+  )
+}
+
+ 
